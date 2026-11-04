@@ -1,0 +1,46 @@
+{
+  "title": "Echo",
+  "subtitle": "    Feedback to product action for Creative Studio · Proposed pilot / not deployed",
+  "thesis": "Agents assemble the evidence, draft the brief and draft every update; people make the three decisions that spend capacity or credibility: commit, verify, send.",
+  "input": {
+    "label": "SIGNAL",
+    "title": "Feedback item",
+    "lines": ["Chat message", "Test / research", "Doc, recording"]
+  },
+  "stages": [
+    { "num": 1, "label": "INTAKE",   "kind": "deterministic", "title": "Capture",       "body": ["Required fields,", "source link.", "Missing → clarify."] },
+    { "num": 2, "label": "CONTEXT",  "kind": "model",         "title": "Assemble",      "body": ["Links signals,", "who reported it,", "suggests related."] },
+    { "num": 3, "label": "PREPARE",  "kind": "model",         "title": "Draft brief",   "body": ["Goal vs outcome,", "evidence, draft", "pass/fail test."] },
+    { "num": 4, "label": "DECISION", "kind": "human",         "title": "Decide",        "body": ["Commit, defer, or", "decline + reason.", "Confirms grouping."] },
+    { "num": 5, "label": "DELIVERY", "kind": "external",      "title": "Linked task",   "body": ["Existing, or new", "only after Commit.", "Status read only."] },
+    { "num": 6, "label": "VERIFY",   "kind": "human",         "title": "Retest",        "body": ["Not implementer.", "Pass/fail + proof.", "Fail → back to 5."] },
+    { "num": 7, "label": "UPDATE",   "kind": "model",         "title": "Draft updates", "body": ["Decision update,", "then outcome, one", "per contributor."] }
+  ],
+  "data_sources": [
+    { "over": [2, 3], "lines": ["Signals · people field · template", "chat, docs, Resi report"] },
+    { "over": [4],    "lines": ["Decision rules, list description", "commit needs owner + capacity"] },
+    { "over": [7],    "lines": ["Update templates · destination", "set per contributor at intake"] }
+  ],
+  "bypass": { "from": 1, "to": 4, "note": "Restricted or unattributed: no agent run" },
+  "execution": {
+    "label": "SEND",
+    "title": "Agent posts",
+    "lines": ["Approved text only,", "to approved place.", "Logged. ClickUp only."],
+    "highlight_last": true
+  },
+  "panels": [
+    { "title": "Audit / operating record",
+      "body": ["Append-only in effect: the ClickUp activity log records every field, status, agent and human action, attributed and timed.",
+               "Per issue, three durable fields: decision log, verification log, send log (recipient, destination, text, result, remote link).",
+               "Nothing happens off the task. Repeat tests run through Research Resi with human-approved plans and land back here as signals."] },
+    { "title": "Trust & eval loop",
+      "body": ["Pilot ceiling is L1 for every category: agents draft, people approve per item.",
+               "The decision-maker marks each draft accepted / edited / rejected; the edit rate tunes prompts.",
+               "Any agent write without an approval record disables the agent. Decisions stay L0 for good."] }
+  ],
+  "feedback": { "from_panel": 1, "to_stage": 3, "label": "edit rate tunes the prompt, never autonomy" },
+  "caption": [
+    "Design choice: three agent runs per issue (prepare, decision update, outcome update), each fired once by a status change. Native agents do not guarantee call counts; runs are counted in the activity log.",
+    "The agent never decides, never creates a delivery task, never marks verified, and never posts without an approval record; restricted or unattributed items never reach it. Proposed pilot / not deployed."
+  ]
+}
