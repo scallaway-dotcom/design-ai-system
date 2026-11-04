@@ -35,7 +35,7 @@ Optionally append a ClickUp chat channel or thread URL.
 
 ```bash
 python3 scripts/render_diagram.py reference/maestro.spec.json /tmp/maestro.svg
-scripts/svg_to_png.sh /tmp/maestro.svg /tmp/maestro.png
+bash scripts/svg_to_png.sh /tmp/maestro.svg /tmp/maestro.png
 ```
 
 `svg_to_png.sh` exits 0 ok, 2 usage, 3 Chrome missing, 4 no output, 5 wrong size.

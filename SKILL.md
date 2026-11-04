@@ -150,7 +150,7 @@ Expand the chosen candidate into the full design and show it as text in chat, in
 3. Render:
    ```bash
    python3 <skill-dir>/scripts/render_diagram.py architecture.spec.json architecture.svg
-   <skill-dir>/scripts/svg_to_png.sh architecture.svg architecture.png
+   bash <skill-dir>/scripts/svg_to_png.sh architecture.svg architecture.png
    ```
    If the renderer exits 2, read its errors, fix the spec, re-run. If `svg_to_png.sh` exits 3,
    ship the SVG and tell the user Chrome was not found.
@@ -185,5 +185,5 @@ target look before writing a new one:
 
 ```bash
 python3 <skill-dir>/scripts/render_diagram.py <skill-dir>/reference/maestro.spec.json /tmp/maestro.svg
-<skill-dir>/scripts/svg_to_png.sh /tmp/maestro.svg /tmp/maestro.png
+bash <skill-dir>/scripts/svg_to_png.sh /tmp/maestro.svg /tmp/maestro.png
 ```
