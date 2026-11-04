@@ -146,6 +146,8 @@ Expand the chosen candidate into the full design and show it as text in chat, in
    lines}, stages[{num,label,kind,title,body}], data_sources[{over,lines}], bypass{from,to,note},
    execution{label,title,lines,highlight_last}, panels[2]{title,body}, feedback{from_panel,
    to_stage,label} (from_panel 0 = left panel, audit log; 1 = right panel, trust ladder),
+   returns[{from,to,kind,label}] (optional; a later stage back to an earlier one, `to` 0 = the
+   input box; `kind` `fail` draws a red dashed hop under the cards, `loop` a grey run below it),
    caption[2]`. `kind` ∈ `deterministic | model | human | external`.
 3. Render:
    ```bash
