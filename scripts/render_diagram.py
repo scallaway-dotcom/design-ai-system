@@ -346,7 +346,7 @@ FEED_Y, FEED_TOP = 478, 452
 # Return arrows (a later stage back to an earlier one) run in the gap under the card row:
 # "fail" hops sit just under the cards, above the feedback line; "loop" runs sit below it.
 RETURN_KINDS = {
-    "fail": dict(y=464, label_y=459, stroke="#b3261e", dash="6 4", marker="arrowRed", side=-1),
+    "fail": dict(y=466, label_y=457, stroke="#b3261e", dash="6 4", marker="arrowRed", side=-1),
     "loop": dict(y=524, label_y=540, stroke="#7a7c84", dash="",    marker="arrowGray", side=1),
 }
 RETURN_LEG = 14
@@ -421,7 +421,9 @@ def _overlays(spec, card_w, xs, cx, band_x, div_x):
                    f'stroke="{k["stroke"]}" stroke-width="1.6" fill="none"{dash} marker-end="url(#{k["marker"]})"/>')
         label = r.get("label", "")
         if label:
-            out.append(text((sx + ex) / 2, k["label_y"], "lg", label, fill=k["stroke"], anchor="middle"))
+            lx, rect_w = (sx + ex) / 2, round(len(label) * 5.5) + 10
+            out.append(f'<rect x="{lx - rect_w / 2:.1f}" y="{k["label_y"] - 10}" width="{rect_w}" height="12" fill="#ffffff"/>')
+            out.append(text(lx, k["label_y"], "lg", label, fill=k["stroke"], anchor="middle"))
 
     return out
 
