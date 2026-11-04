@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1580 800" width="1580" height="800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <style>
+    .t     { font-size: 31px; font-weight: 700; fill: #17181c; letter-spacing: -0.5px; }
+    .sub   { font-size: 15px; fill: #5c5e66; }
+    .lg    { font-size: 12.5px; fill: #5c5e66; }
+    .bt    { font-size: 15.5px; font-weight: 650; fill: #17181c; }
+    .bn    { font-size: 11.5px; fill: #5c5e66; }
+    .bnum  { font-size: 11px; font-weight: 700; fill: #9a9ca4; letter-spacing: .08em; }
+    .feed  { font-size: 11.5px; fill: #7a7c84; }
+    .feedb { font-size: 11.5px; fill: #7a7c84; font-weight: 600; }
+    .band  { font-size: 14.5px; font-weight: 650; fill: #17181c; }
+    .bandn { font-size: 11.5px; fill: #5c5e66; }
+    .note  { font-size: 12.5px; fill: #7a7c84; }
+  </style>
+  <rect width="1580" height="800" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b6b4ad"/>
+    </marker>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+    <marker id="arrowThin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c4c2bb"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b3261e"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7a7c84"/>
+    </marker>
+  </defs>
+<text x="60.0" y="56" class="t">Echo</text>
+<text x="132.0" y="56" class="sub">    Feedback to product action for Creative Studio · Proposed pilot / not deployed</text>
+<text x="60.0" y="84" class="sub">Agents assemble the evidence, draft the brief and draft every update; people make the three decisions that spend capacity or credibility: commit, verify, send.</text>
+  <g transform="translate(60,112)">
+    <rect x="0" y="0" width="15" height="15" rx="4" fill="#ffffff" stroke="#d7d5cf" stroke-width="1.5"/>
+    <text x="23" y="12" class="lg">Deterministic code</text>
+    <rect x="175" y="0" width="15" height="15" rx="4" fill="#eeedfc" stroke="#4f46e5" stroke-width="1.5"/>
+    <text x="198" y="12" class="lg">Model-backed (one call)</text>
+    <rect x="382" y="0" width="15" height="15" rx="4" fill="#fdf3d7" stroke="#9a6700" stroke-width="1.5"/>
+    <text x="405" y="12" class="lg">Human decision point</text>
+    <rect x="579" y="0" width="15" height="15" rx="4" fill="#f4f3f0" stroke="#b6b4ad" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="602" y="12" class="lg">External system / adapter</text>
+  </g>
+<rect x="60.0" y="312" width="134.0" height="132" rx="10" fill="#f4f3f0" stroke="#b6b4ad" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="76.0" y="337" class="bnum">SIGNAL</text>
+<text x="76.0" y="362" class="bt">Feedback item</text>
+<text x="76.0" y="387" class="bn">Chat message</text>
+<text x="76.0" y="405" class="bn">Test / research</text>
+<text x="76.0" y="423" class="bn">Doc, recording</text>
+<path d="M 198.0 378 L 224.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="228.0" y="312" width="134.0" height="132" rx="10" fill="#ffffff" stroke="#d7d5cf" stroke-width="1.5"/>
+<text x="244.0" y="337" class="bnum">1 · INTAKE</text>
+<text x="244.0" y="362" class="bt">Capture</text>
+<text x="244.0" y="387" class="bn">Fields + source link.</text>
+<text x="244.0" y="405" class="bn">Missing → clarify.</text>
+<text x="244.0" y="423" class="bn">Restricted: no agent.</text>
+<path d="M 366.0 378 L 392.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="396.0" y="312" width="134.0" height="132" rx="10" fill="#eeedfc" stroke="#4f46e5" stroke-width="1.8"/>
+<text x="412.0" y="337" class="bnum" fill="#4f46e5">2 · PREPARE</text>
+<text x="412.0" y="362" class="bt">Prepare brief</text>
+<text x="412.0" y="387" class="bn">Links signals, names</text>
+<text x="412.0" y="405" class="bn">reporters, related;</text>
+<text x="412.0" y="423" class="bn">drafts pass/fail test.</text>
+<path d="M 534.0 378 L 560.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="564.0" y="312" width="134.0" height="132" rx="10" fill="#fdf3d7" stroke="#9a6700" stroke-width="1.8"/>
+<text x="580.0" y="337" class="bnum" fill="#9a6700">3 · DECISION</text>
+<text x="580.0" y="362" class="bt">Decide</text>
+<text x="580.0" y="387" class="bn">Commit, defer, or</text>
+<text x="580.0" y="405" class="bn">decline + reason.</text>
+<text x="580.0" y="423" class="bn">Confirms grouping.</text>
+<path d="M 702.0 378 L 728.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="732.0" y="312" width="134.0" height="132" rx="10" fill="#f4f3f0" stroke="#b6b4ad" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="748.0" y="337" class="bnum">4 · DELIVERY</text>
+<text x="748.0" y="362" class="bt">Linked task</text>
+<text x="748.0" y="387" class="bn">Existing, or new</text>
+<text x="748.0" y="405" class="bn">only after Commit.</text>
+<text x="748.0" y="423" class="bn">Status read only.</text>
+<path d="M 870.0 378 L 896.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="900.0" y="312" width="134.0" height="132" rx="10" fill="#fdf3d7" stroke="#9a6700" stroke-width="1.8"/>
+<text x="916.0" y="337" class="bnum" fill="#9a6700">5 · VERIFY</text>
+<text x="916.0" y="362" class="bt">Retest</text>
+<text x="916.0" y="387" class="bn">Not implementer.</text>
+<text x="916.0" y="405" class="bn">Pass/fail + proof.</text>
+<text x="916.0" y="423" class="bn">Shipped ≠ verified.</text>
+<path d="M 1038.0 378 L 1064.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="1068.0" y="312" width="134.0" height="132" rx="10" fill="#eeedfc" stroke="#4f46e5" stroke-width="1.8"/>
+<text x="1084.0" y="337" class="bnum" fill="#4f46e5">6 · UPDATE</text>
+<text x="1084.0" y="362" class="bt">Draft updates</text>
+<text x="1084.0" y="387" class="bn">Decision update,</text>
+<text x="1084.0" y="405" class="bn">then outcome, one</text>
+<text x="1084.0" y="423" class="bn">per contributor.</text>
+<path d="M 1206.0 378 L 1232.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="1236.0" y="312" width="134.0" height="132" rx="10" fill="#fdf3d7" stroke="#9a6700" stroke-width="1.8"/>
+<text x="1252.0" y="337" class="bnum" fill="#9a6700">7 · APPROVE</text>
+<text x="1252.0" y="362" class="bt">Approve send</text>
+<text x="1252.0" y="387" class="bn">Exact text + place.</text>
+<text x="1252.0" y="405" class="bn">Edited → re-approve.</text>
+<text x="1252.0" y="423" class="bn">Unknown reporter: hold.</text>
+<path d="M 1374.0 378 L 1400.0 378" stroke="#b6b4ad" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="1404.0" y="312" width="134.0" height="132" rx="10" fill="#f4f3f0" stroke="#b6b4ad" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1420.0" y="337" class="bnum">SEND</text>
+<text x="1420.0" y="362" class="bt">Agent posts</text>
+<text x="1420.0" y="387" class="bn">Approved text only,</text>
+<text x="1420.0" y="405" class="bn">ClickUp destinations.</text>
+<text x="1420.0" y="423" class="bn" fill="#9a6700">Others: manual send.</text>
+<g stroke="#d3d1ca" stroke-width="1.2" stroke-dasharray="3 4">
+<path d="M 295.0 448 L 295.0 584"/>
+<path d="M 463.0 448 L 463.0 584"/>
+<path d="M 631.0 448 L 631.0 584"/>
+<path d="M 799.0 448 L 799.0 584"/>
+<path d="M 967.0 448 L 967.0 584"/>
+<path d="M 1135.0 448 L 1135.0 584"/>
+<path d="M 1303.0 448 L 1303.0 584"/>
+<path d="M 1471.0 448 L 1471.0 584"/>
+</g>
+<rect x="228.0" y="588" width="1310.0" height="112" rx="10" fill="#ffffff" stroke="#d7d5cf" stroke-width="1.5"/>
+<path d="M 991.2 588 L 991.2 700" stroke="#e7e5de" stroke-width="1.5"/>
+<text x="256.0" y="618" class="band">Audit / operating record</text>
+<text x="256.0" y="642" class="bandn">Requirements to verify in staging, not established protections: every agent and human write lands</text>
+<text x="256.0" y="660" class="bandn">in the activity log, attributed and timed; an agent write with no approval record shows in a saved view.</text>
+<text x="256.0" y="678" class="bandn">Per issue: decision log, verification log, send log (recipient, destination, text, result, remote link).</text>
+<text x="1019.2" y="618" class="band">Operating checks</text>
+<text x="1019.2" y="642" class="bandn">Overdue decisions and deferrals due for review, by issue.</text>
+<text x="1019.2" y="660" class="bandn">Committed → verified, with evidence. Updates sent vs owed, per contributor.</text>
+<text x="1019.2" y="678" class="bandn">Denominators stated; missing data shown as missing, not zero.</text>
+<text x="463.0" y="200" class="feedb" text-anchor="middle">Signals · reporters</text>
+<text x="463.0" y="217" class="feed" text-anchor="middle">chat, docs, Resi report</text>
+<path d="M 463.0 228 L 463.0 306" stroke="#c4c2bb" stroke-width="1.4" marker-end="url(#arrowThin)"/>
+<text x="631.0" y="200" class="feedb" text-anchor="middle">Decision rules (list text)</text>
+<text x="631.0" y="217" class="feed" text-anchor="middle">owner + capacity to commit</text>
+<path d="M 631.0 228 L 631.0 306" stroke="#c4c2bb" stroke-width="1.4" marker-end="url(#arrowThin)"/>
+<text x="1219.0" y="200" class="feedb" text-anchor="middle">Update templates · destination</text>
+<text x="1219.0" y="217" class="feed" text-anchor="middle">set per contributor at intake</text>
+<path d="M 1219.0 228 L 1219.0 306" stroke="#c4c2bb" stroke-width="1.4" marker-end="url(#arrowThin)"/>
+<path d="M 686.0 306 L 686.0 272 L 1164.0 272 L 1164.0 306" stroke="#b3261e" stroke-width="1.6" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+<text x="925.0" y="260" class="lg" fill="#b3261e" text-anchor="middle">Defer or decline: straight to the update</text>
+<path d="M 1001.2 584 L 1001.2 478 L 667.0 478 L 667.0 452" stroke="#4f46e5" stroke-width="1.6" fill="none" marker-end="url(#arrowLoop)"/>
+<rect x="391.0" y="470" width="268" height="18" fill="#ffffff"/>
+<text x="655.0" y="484" class="lg" fill="#4f46e5" text-anchor="end">overdue decisions go back to the decision-maker</text>
+<path d="M 953.0 448 L 953.0 466 L 813.0 466 L 813.0 448" stroke="#b3261e" stroke-width="1.6" fill="none" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+<rect x="817.5" y="447" width="131" height="12" fill="#ffffff"/>
+<text x="883.0" y="457" class="lg" fill="#b3261e" text-anchor="middle">fail: back to delivery</text>
+<path d="M 981.0 448 L 981.0 524 L 127.0 524 L 127.0 448" stroke="#7a7c84" stroke-width="1.6" fill="none" marker-end="url(#arrowGray)"/>
+<rect x="321.0" y="530" width="466" height="12" fill="#ffffff"/>
+<text x="554.0" y="540" class="lg" fill="#7a7c84" text-anchor="middle">comparable repeat test via Research Resi; remaining friction returns as new signals</text>
+<text x="60.0" y="754" class="note">Design choice: three agent runs per issue (prepare, decision update, outcome update), each fired once by a status change. Native agents do not guarantee call counts; runs are counted in the activity log.</text>
+<text x="60.0" y="774" class="note">The agent never decides, never creates a delivery task, never marks verified, never posts without an approval record. Pilot is draft-only (L1); decisions and sends never promote. Proposed pilot / not deployed.</text>
+</svg>

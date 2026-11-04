@@ -231,8 +231,42 @@ class OverlayTests(unittest.TestCase):
         self.assertIn('marker-end="url(#arrowLoop)"', svg)
         self.assertIn('fill="#4f46e5" text-anchor="end">sets autonomy</text>', svg)
 
+    def test_returns_validation(self):
+        ok = make_spec(6, returns=[{"from": 5, "to": 4, "label": "fail"},
+                                   {"from": 5, "to": 0, "kind": "loop", "label": "again"}])
+        self.assertEqual(rd.validate(ok), [])
+        forward = make_spec(6, returns=[{"from": 3, "to": 5}])
+        self.assertTrue(any("returns[1]" in e for e in rd.validate(forward)))
+        bad_kind = make_spec(6, returns=[{"from": 5, "to": 4, "kind": "retry"}])
+        self.assertTrue(any("kind must be one of" in e for e in rd.validate(bad_kind)))
+        too_far = make_spec(6, returns=[{"from": 7, "to": 4}])
+        self.assertTrue(any("returns[1]" in e for e in rd.validate(too_far)))
+
+    def test_returns_rendered_in_gap_under_cards(self):
+        spec = make_spec(6, returns=[{"from": 5, "to": 4, "label": "retest fails"},
+                                     {"from": 5, "to": 0, "kind": "loop", "label": "repeat test"}])
+        root = parse(rd.render(spec))
+        cx = rd.centers(6)
+        red = [p for p in root.iter(SVG_NS + "path")
+               if p.get("stroke") == "#b3261e" and "arrowRed" in (p.get("marker-end") or "")]
+        gray = [p for p in root.iter(SVG_NS + "path") if "arrowGray" in (p.get("marker-end") or "")]
+        self.assertEqual(len(red), 1)
+        self.assertEqual(len(gray), 1)
+        # the fail hop ends beside stage 4's drop; the loop ends at the input box centre
+        self.assertIn(f"L {cx[4] + rd.RETURN_LEG:.1f} {rd.ROW_Y + rd.CARD_H + 4}", red[0].get("d"))
+        self.assertIn(f"L {cx[0]:.1f} {rd.ROW_Y + rd.CARD_H + 4}", gray[0].get("d"))
+        # both lanes stay between the card row and the band
+        for p in red + gray:
+            ys = [float(y) for _, _, y in re.findall(r"([ML])\s*([\d.]+)\s+([\d.]+)", p.get("d"))]
+            self.assertTrue(all(rd.ROW_Y + rd.CARD_H < y < rd.BAND_Y for y in ys), ys)
+        labels = {t.text for t in root.iter(SVG_NS + "text")}
+        self.assertIn("retest fails", labels)
+        self.assertIn("repeat test", labels)
+
     def test_malformed_optional_sections_rejected_without_raising(self):
         bad = [
+            {"returns": "x"}, {"returns": [None]}, {"returns": [{}]},
+            {"returns": [{"from": "5", "to": 4}]}, {"returns": [{"from": 5, "to": 4, "label": 3}]},
             {"data_sources": "x"}, {"data_sources": [None]}, {"data_sources": [{}]},
             {"data_sources": [{"over": []}]}, {"data_sources": [{"over": ["a"]}]},
             {"data_sources": [{"over": [True]}]}, {"data_sources": [{"over": 2}]},

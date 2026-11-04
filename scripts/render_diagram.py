@@ -54,6 +54,9 @@ DEFS = """  <defs>
     <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#b3261e"/>
     </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7a7c84"/>
+    </marker>
   </defs>"""
 
 LEGEND = """  <g transform="translate(60,112)">
@@ -212,6 +215,26 @@ def _overlays_ok(errors, spec, n):
             if not isinstance(f.get("label", ""), str):
                 errors.append("feedback: label must be a string")
 
+    if "returns" in spec:
+        returns = spec["returns"]
+        if not isinstance(returns, list):
+            errors.append("returns must be a list")
+            returns = []
+        for i, r in enumerate(returns, 1):
+            if not isinstance(r, dict):
+                errors.append(f"returns[{i}]: must be an object")
+                continue
+            a, z = r.get("from"), r.get("to")
+            if not (_is_int(a) and _is_int(z)):
+                errors.append(f"returns[{i}]: 'from' and 'to' must be ints")
+            elif not (z < a and in_range(a) and a >= 1 and (z == 0 or in_range(z))):
+                errors.append(f"returns[{i}]: 'to' ({z}) must be before 'from' ({a}); "
+                              f"'from' is a stage number {rng}, 'to' is a stage number or 0 (input)")
+            if r.get("kind", "fail") not in RETURN_KINDS:
+                errors.append(f"returns[{i}]: kind must be one of {sorted(RETURN_KINDS)}")
+            if not isinstance(r.get("label", ""), str):
+                errors.append(f"returns[{i}]: label must be a string")
+
 
 # ── geometry ─────────────────────────────────────────────────────────────────
 
@@ -320,6 +343,13 @@ def render(spec):
 SRC_Y1, SRC_Y2, SRC_DROP_TOP, SRC_DROP_BOT = 200, 217, 228, 306
 BYPASS_Y, BYPASS_NOTE_Y, BYPASS_GAP = 272, 260, 10
 FEED_Y, FEED_TOP = 478, 452
+# Return arrows (a later stage back to an earlier one) run in the gap under the card row:
+# "fail" hops sit just under the cards, above the feedback line; "loop" runs sit below it.
+RETURN_KINDS = {
+    "fail": dict(y=466, label_y=457, stroke="#b3261e", dash="6 4", marker="arrowRed", side=-1),
+    "loop": dict(y=524, label_y=540, stroke="#7a7c84", dash="",    marker="arrowGray", side=1),
+}
+RETURN_LEG = 14
 
 
 def _overlays(spec, card_w, xs, cx, band_x, div_x):
@@ -377,6 +407,23 @@ def _overlays(spec, card_w, xs, cx, band_x, div_x):
         rect_w = round(len(label) * 5.5) + 10
         out.append(f'<rect x="{tx - 8 - rect_w:.1f}" y="{FEED_Y - 8}" width="{rect_w}" height="18" fill="#ffffff"/>')
         out.append(text(tx - 12, FEED_Y + 6, "lg", label, fill="#4f46e5", anchor="end"))
+
+    # returns: a later stage back to an earlier stage (or to the input box when to == 0)
+    for r in spec.get("returns", []):
+        k = RETURN_KINDS[r.get("kind", "fail")]
+        a, z = r["from"], r["to"]
+        # Legs sit beside the dashed drop at each card centre so the two never overlap.
+        sx = cx[a] + k["side"] * RETURN_LEG
+        ex = cx[z] + RETURN_LEG if z > 0 else cx[0]
+        top = ROW_Y + CARD_H + 4
+        dash = f' stroke-dasharray="{k["dash"]}"' if k["dash"] else ""
+        out.append(f'<path d="M {sx:.1f} {top} L {sx:.1f} {k["y"]} L {ex:.1f} {k["y"]} L {ex:.1f} {top}" '
+                   f'stroke="{k["stroke"]}" stroke-width="1.6" fill="none"{dash} marker-end="url(#{k["marker"]})"/>')
+        label = r.get("label", "")
+        if label:
+            lx, rect_w = (sx + ex) / 2, round(len(label) * 5.5) + 10
+            out.append(f'<rect x="{lx - rect_w / 2:.1f}" y="{k["label_y"] - 10}" width="{rect_w}" height="12" fill="#ffffff"/>')
+            out.append(text(lx, k["label_y"], "lg", label, fill=k["stroke"], anchor="middle"))
 
     return out
 

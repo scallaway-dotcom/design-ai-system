@@ -1,0 +1,179 @@
+{
+  "title": "Echo",
+  "subtitle": "    Feedback to product action for Creative Studio · Proposed pilot / not deployed",
+  "thesis": "Agents assemble the evidence, draft the brief and draft every update; people make the three decisions that spend capacity or credibility: commit, verify, send.",
+  "input": {
+    "label": "SIGNAL",
+    "title": "Feedback item",
+    "lines": [
+      "Chat message",
+      "Test / research",
+      "Doc, recording"
+    ]
+  },
+  "stages": [
+    {
+      "num": 1,
+      "label": "INTAKE",
+      "kind": "deterministic",
+      "title": "Capture",
+      "body": [
+        "Fields + source link.",
+        "Missing → clarify.",
+        "Restricted: no agent."
+      ]
+    },
+    {
+      "num": 2,
+      "label": "PREPARE",
+      "kind": "model",
+      "title": "Prepare brief",
+      "body": [
+        "Links signals, names",
+        "reporters, related;",
+        "drafts pass/fail test."
+      ]
+    },
+    {
+      "num": 3,
+      "label": "DECISION",
+      "kind": "human",
+      "title": "Decide",
+      "body": [
+        "Commit, defer, or",
+        "decline + reason.",
+        "Confirms grouping."
+      ]
+    },
+    {
+      "num": 4,
+      "label": "DELIVERY",
+      "kind": "external",
+      "title": "Linked task",
+      "body": [
+        "Existing, or new",
+        "only after Commit.",
+        "Status read only."
+      ]
+    },
+    {
+      "num": 5,
+      "label": "VERIFY",
+      "kind": "human",
+      "title": "Retest",
+      "body": [
+        "Not implementer.",
+        "Pass/fail + proof.",
+        "Shipped ≠ verified."
+      ]
+    },
+    {
+      "num": 6,
+      "label": "UPDATE",
+      "kind": "model",
+      "title": "Draft updates",
+      "body": [
+        "Decision update,",
+        "then outcome, one",
+        "per contributor."
+      ]
+    },
+    {
+      "num": 7,
+      "label": "APPROVE",
+      "kind": "human",
+      "title": "Approve send",
+      "body": [
+        "Exact text + place.",
+        "Edited → re-approve.",
+        "Unknown reporter: hold."
+      ]
+    }
+  ],
+  "data_sources": [
+    {
+      "over": [
+        2
+      ],
+      "lines": [
+        "Signals · reporters",
+        "chat, docs, Resi report"
+      ]
+    },
+    {
+      "over": [
+        3
+      ],
+      "lines": [
+        "Decision rules (list text)",
+        "owner + capacity to commit"
+      ]
+    },
+    {
+      "over": [
+        6,
+        7
+      ],
+      "lines": [
+        "Update templates · destination",
+        "set per contributor at intake"
+      ]
+    }
+  ],
+  "bypass": {
+    "from": 3,
+    "to": 6,
+    "note": "Defer or decline: straight to the update"
+  },
+  "returns": [
+    {
+      "from": 5,
+      "to": 4,
+      "kind": "fail",
+      "label": "fail: back to delivery"
+    },
+    {
+      "from": 5,
+      "to": 0,
+      "kind": "loop",
+      "label": "comparable repeat test via Research Resi; remaining friction returns as new signals"
+    }
+  ],
+  "execution": {
+    "label": "SEND",
+    "title": "Agent posts",
+    "lines": [
+      "Approved text only,",
+      "ClickUp destinations.",
+      "Others: manual send."
+    ],
+    "highlight_last": true
+  },
+  "panels": [
+    {
+      "title": "Audit / operating record",
+      "body": [
+        "Requirements to verify in staging, not established protections: every agent and human write lands",
+        "in the activity log, attributed and timed; an agent write with no approval record shows in a saved view.",
+        "Per issue: decision log, verification log, send log (recipient, destination, text, result, remote link)."
+      ]
+    },
+    {
+      "title": "Operating checks",
+      "body": [
+        "Overdue decisions and deferrals due for review, by issue.",
+        "Committed → verified, with evidence. Updates sent vs owed, per contributor.",
+        "Denominators stated; missing data shown as missing, not zero."
+      ]
+    }
+  ],
+  "feedback": {
+    "from_panel": 1,
+    "to_stage": 3,
+    "label": "overdue decisions go back to the decision-maker"
+  },
+  "caption": [
+    "Design choice: three agent runs per issue (prepare, decision update, outcome update), each fired once by a status change. Native agents do not guarantee call counts; runs are counted in the activity log.",
+    "The agent never decides, never creates a delivery task, never marks verified, never posts without an approval record. Pilot is draft-only (L1); decisions and sends never promote. Proposed pilot / not deployed."
+  ]
+}
